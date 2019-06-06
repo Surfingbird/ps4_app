@@ -1,0 +1,37 @@
+{% extends "ps4/base.html" %}
+
+{% block main %}
+<div class="jumbotron text-center" style="padding-top: 100px">
+    <div class="container">
+        <h1 class="jumbotron-heading">Запись на мероприятия</h1>
+        <p class="lead text-muted">Здесь вы можете записаться в очередь на сдачу лаб, курсачей и прочей чепухи, с которой приходится жить :)</p>
+    </div>
+</div>
+
+{% if events_list %}
+<div class="container">
+    <div class="row">
+    {% for event in events_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text"> {{event.event_name}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Перейти</button>
+                                </div>
+                                <small class="text-muted"> {{event.created}} </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+
+{% endblock %}
+
